@@ -12,9 +12,10 @@
         <tr>
           <td><?php echo $category['categoryID']; ?></td>
           <td><?php echo $category['categoryName']; ?></td>
-          <td><form action="delete_category.php" method="post">
+          <td><form action="index.php" method="post">
               <input type="hidden" name="category_id"
                       value="<?php echo $category['categoryID']; ?>">
+               <input type="hidden" name="action" value="delete_category">       
               <input type="submit" value="Delete">
           </form></td>  
           <?php endforeach; ?>  
@@ -28,8 +29,8 @@
         <form action="index.php" method="post"
               id="add_category_form">
 
-            <label>Category:</label>
-            <input type="text" name="category"><br>
+            <label>Name:</label>
+            <input type="text" name="name"><br>
             <input type="hidden" name="action" value="add_category"
             <label>&nbsp;</label>
             <input type="submit" value="Add Category"><br>

@@ -23,7 +23,7 @@ function get_category_name($category_id) {
 function add_category ($name) {
     global $db;    
     $query = 'INSERT INTO categories(categoryName)'
-              .'VALUES (:name)';
+              . ' VALUES (:name)';
     $statement = $db->prepare($query);
     $statement->bindValue(':name', $name);
     $statement->execute();    
@@ -34,7 +34,7 @@ function add_category ($name) {
 function delete_category ($category_id) {
     global $db;
     $query = 'DELETE FROM categories'
-              .'WHERE categoryID = :id';
+              . ' WHERE categoryID = :id';
     $statement = $db->prepare($query);
     $statement->bindValue(':id', $category_id);
     $statement->execute();    

@@ -25,6 +25,31 @@ if ($action == 'list_products') {
 } else if ($action == 'list_categories') {
             $categories = get_categories();
             include('category_list.php');
+
+} else if ($action == 'add_category') {
+             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+             
+            if ($name == NULL || $name == FALSE) {
+            $error= 'Please provide a name';
+              include('../errors/error.php');
+         }   else {
+                 add_category($name);
+                 header('Location: .?action=list_categories');
+         }      
+
+} else if ($action == 'delete_category') {
+            $category_id = filter_input(INPUT_POST, 'category_id', 
+            FILTER_VALIDATE_INT);
+             
+            if ($category_id == NULL || $category_id == FALSE) {
+            $error = 'Missing category ID';
+            include ('../errors/error.php');
+          } else {
+                delete_category($category_id);
+                header('Location: .?action=list_categories');
+           }                     
+            
+            
             
 } else if ($action == 'delete_product') {
     $product_id = filter_input(INPUT_POST, 'product_id', 
